@@ -1,0 +1,22 @@
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+export EDITOR="vim"
+
+HOMEBREW_PATH="/Users/ihji/.homebrew/bin"
+export PATH=$HOMEBREW_PATH:$PATH
+
+# for Play framework 2.0 (temporary)
+PLAY_PATH="/Users/ihji/Works/play-2.0-RC2"
+export PATH=$PLAY_PATH:$PATH
+
+# for Android SDK
+ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
+export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH
+
+# for Node.js
+export NODE_PATH="/Users/ihji/.homebrew/lib/node_modules"
+
+# for python
+PYTHON_SCRIPT_PATH="/Users/ihji/.homebrew/share/python"
+export PATH=$PYTHON_SCRIPT_PATH:$PATH

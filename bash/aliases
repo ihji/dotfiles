@@ -1,0 +1,9 @@
+alias ls="ls -GF"
+alias l="ls -GFal"
+
+alias g="git status"
+
+alias ropas="ssh -AY ropas.snu.ac.kr"
+alias pushpop="ssh -AY stack.pushpop.net"
+alias azeroth="ssh -AY 192.168.100.212"
+alias fixpoint="ssh -AY fixpoint.cs.berkeley.edu"

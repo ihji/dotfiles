@@ -1,0 +1,7 @@
+. ~/.dotfiles/bash/colors
+
+PS1="[\[$EBLACK\]\t\[$NO_COLOR\]]:\w\n\[$EGREEN\]\h\[$NO_COLOR\] \u$ "
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	. `brew --prefix`/etc/bash_completion
+fi
