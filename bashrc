@@ -7,5 +7,3 @@ function df_install {
 . ~/.dotfiles/bash/aliases
 . ~/.dotfiles/bash/config
 
-# for ruby
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
