@@ -11,8 +11,9 @@ export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH
 export NODE_PATH="/Users/ihji/.homebrew/lib/node_modules"
 
 # for python
-PYTHON_SCRIPT_PATH="/Users/ihji/.homebrew/share/python3"
-export PATH=$PYTHON_SCRIPT_PATH:$PATH
+PYTHON_SCRIPT_PATH="/Users/ihji/.homebrew/share/python"
+PYTHON3_SCRIPT_PATH="/Users/ihji/.homebrew/share/python3"
+export PATH=$PYTHON_SCRIPT_PATH:$PYTHON3_SCRIPT_PATH:$PATH
 
 # for ruby
 RUBY_SCRIPT_PATH="/Users/ihji/.homebrew/Cellar/ruby/1.9.3-p125/bin"
