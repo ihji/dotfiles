@@ -1,9 +1,16 @@
 # misc config
 
+brew_prefix=`brew --prefix`
+
+if [ -f $brew_prefix/etc/bash_completion ]; then
+	. $brew_prefix/etc/bash_completion
+fi
+
+# prompt setting
 . ~/.dotfiles/bash/colors
-
-PS1="[\[$EBLACK\]\t\[$NO_COLOR\]]:\w\n\[$EGREEN\]\h\[$NO_COLOR\] \u$ "
-
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-	. `brew --prefix`/etc/bash_completion
+if [ -f $brew_prefix/share/git-core/contrib/completion/git-prompt.sh ]; then
+    . $brew_prefix/share/git-core/contrib/completion/git-prompt.sh
+    PS1="[\[$EBLACK\]\t\[$NO_COLOR\]]:\w\$(__git_ps1 ' (%s)')\n\[$EGREEN\]\h\[$NO_COLOR\] \u$ "
+else
+    PS1="[\[$EBLACK\]\t\[$NO_COLOR\]]:\w\n\[$EGREEN\]\h\[$NO_COLOR\] \u$ "
 fi

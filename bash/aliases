@@ -5,6 +5,7 @@ alias l="ls -GFal"
 
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+alias jvisualvm="/Library/Java/JavaVirtualMachines/jdk1.7.0_06.jdk/Contents/Home/bin/jvisualvm"
 
 alias g="git status"
 
