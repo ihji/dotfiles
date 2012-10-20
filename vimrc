@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 set nu
 set hls
 set ai
