@@ -1,6 +1,9 @@
-function df_install {
-    cp -v ~/.dotfiles/vimrc ~/.vimrc
-    cp -v ~/.dotfiles/gitconfig ~/.gitconfig
+function link_dotfiles {
+    rm -f ~/.vimrc
+    rm -f ~/.gitconfig
+
+    ln -s ~/.dotfiles/vimrc ~/.vimrc
+    ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 }
 
 . ~/.dotfiles/bash/env

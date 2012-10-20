@@ -5,6 +5,9 @@ export LC_ALL="en_US.UTF-8"
 
 export EDITOR="vim"
 
+# for Maven
+export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
+
 # for Android SDK
 ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
 export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH
