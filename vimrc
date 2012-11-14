@@ -1,11 +1,19 @@
-call pathogen#infect()
+" Vundle settings
+set nocompatible
+filetype off
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+
+" settings
+filetype plugin indent on
+syntax on
 set nu
 set hls
 set ai
 set si
-filetype plugin indent on
-syntax on
 set ts=4
 set sw=4
 set expandtab
