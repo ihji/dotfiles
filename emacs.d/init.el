@@ -1,6 +1,6 @@
 ;; general settings
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+;;(setq mac-command-modifier 'meta)
+;;(setq mac-option-modifier nil)
 (tool-bar-mode 0)
 (setq make-backup-files nil)
 (setq inhibit-startup-screen t)
@@ -60,6 +60,10 @@
         ace-jump-mode
         yasnippet
         magit
+        clojure-mode
+        nrepl ;; clojure repl client
+        ProofGeneral
+        haskell-mode
         ))
 (el-get 'sync my-el-get-packages)
 

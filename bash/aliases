@@ -2,6 +2,7 @@
 
 alias ls="ls -GF"
 alias l="ls -GFal"
+alias grep="grep --color=auto"
 
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
@@ -10,8 +11,12 @@ alias g="git status"
 
 alias ropas="ssh -AY ropas.snu.ac.kr"
 alias pushpop="ssh -AY stack.pushpop.net"
+
+# berkeley
 alias fol="ssh -AY fold.eecs.berkeley.edu"
 alias noddy="ssh -AY noddy.cs.berkeley.edu"
 alias orchid="ssh -AY orchid.cs.berkeley.edu"
 
+# fasoo
 alias panda="ssh -AY 192.168.100.216"
+alias arena="ssh -AY 192.168.50.83"

@@ -6,7 +6,7 @@ export LC_ALL="en_US.UTF-8"
 export EDITOR="vim"
 
 # for Maven
-export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
+export MAVEN_OPTS="-Xmx2048m -XX:MaxPermSize=512m"
 
 # for Android SDK
 ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
@@ -22,7 +22,7 @@ PYTHON3_SCRIPT_PATH="/Users/ihji/.homebrew/share/python3"
 export PATH=$PYTHON_SCRIPT_PATH:$PYTHON3_SCRIPT_PATH:$PATH
 
 # for ruby
-RUBY_SCRIPT_PATH="/Users/ihji/.homebrew/Cellar/ruby/1.9.3-p327/bin"
+RUBY_SCRIPT_PATH="/Users/ihji/.homebrew/opt/ruby/bin"
 export PATH=$RUBY_SCRIPT_PATH:$PATH
 
 HOMEBREW_PATH="/Users/ihji/.homebrew/bin"
