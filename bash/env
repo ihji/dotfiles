@@ -25,5 +25,6 @@ export PATH=$PYTHON_SCRIPT_PATH:$PYTHON3_SCRIPT_PATH:$PATH
 RUBY_SCRIPT_PATH="/Users/ihji/.homebrew/opt/ruby/bin"
 export PATH=$RUBY_SCRIPT_PATH:$PATH
 
+# homebrew
 HOMEBREW_PATH="/Users/ihji/.homebrew/bin"
 export PATH=$HOMEBREW_PATH:$PATH

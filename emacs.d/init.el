@@ -20,12 +20,12 @@
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 
 ;; add all subdirectories of ~/.emacs.d/modes to load path
-(progn
-  (cd "~/.emacs.d/modes")
-  (normal-top-level-add-subdirs-to-load-path)
-  (cd "~/"))
+;; (progn
+;;   (cd "~/.emacs.d/modes")
+;;   (normal-top-level-add-subdirs-to-load-path)
+;;   (cd "~/"))
 ;; add themes directory to theme load path
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; setting paths
 (if (eq system-type 'darwin) (progn
@@ -64,24 +64,14 @@
         nrepl ;; clojure repl client
         ProofGeneral
         haskell-mode
+        artbollocks-mode
+        zenburn-theme
+        window-number
         ))
 (el-get 'sync my-el-get-packages)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("7cced48b557e24937f437e59c7f6a6cea5ace4e603377beb5067d0b2c27b4b7d" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; autoload zenburn theme
-(load-theme 'zenburn)
+(load-theme 'zenburn t)
 
 ;; auctex settings
 (setq-default TeX-master nil)
@@ -101,6 +91,9 @@
 (setq yas/prompt-functions
   '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt yas/x-prompt yas/no-prompt))
 
-;; window numbering mode settings
-(require 'window-numbering)
-(window-numbering-mode 1)
+;; window-number mode settings
+(autoload 'window-number-meta-mode "window-number"
+  "A global minor mode that enables use of the M- prefix to select
+windows, use `window-number-mode' to display the window numbers in
+the mode-line." t)
+(window-number-meta-mode 1)

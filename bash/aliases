@@ -19,4 +19,4 @@ alias orchid="ssh -AY orchid.cs.berkeley.edu"
 
 # fasoo
 alias panda="ssh -AY 192.168.100.216"
-alias arena="ssh -AY 192.168.50.83"
+alias arena="ssh -AY 192.168.50.116"
