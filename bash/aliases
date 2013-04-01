@@ -9,7 +9,7 @@ alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 
 alias g="git status"
 
-alias ropas="ssh -AY ropas.snu.ac.kr"
+alias ropas="ssh ropas.snu.ac.kr"
 alias pushpop="ssh -AY stack.pushpop.net"
 
 # berkeley

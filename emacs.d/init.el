@@ -4,6 +4,7 @@
 (tool-bar-mode 0)
 (setq make-backup-files nil)
 (setq inhibit-startup-screen t)
+(setq initial-scratch-message nil)
 (setq default-input-method "korean-hangul")
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
@@ -11,13 +12,14 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 (global-auto-revert-mode 1)
-(add-hook 'prog-mode-hook
-  (lambda () (setq show-trailing-whitespace t)))
 (define-key global-map (kbd "M-/") 'hippie-expand)
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
 (require 'dired)
 (put 'dired-find-alternate-file 'disabled nil)
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+(add-hook 'prog-mode-hook
+  (lambda () (setq show-trailing-whitespace t)))
+(add-hook 'text-mode-hook 'turn-on-flyspell)
 
 ;; add all subdirectories of ~/.emacs.d/modes to load path
 ;; (progn
@@ -67,6 +69,7 @@
         artbollocks-mode
         zenburn-theme
         window-number
+        multiple-cursors
         ))
 (el-get 'sync my-el-get-packages)
 
@@ -97,3 +100,22 @@
 windows, use `window-number-mode' to display the window numbers in
 the mode-line." t)
 (window-number-meta-mode 1)
+
+;; artbollocks mode
+(setq artbollocks nil)
+
+;; multiple-cursors
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(send-mail-function (quote sendmail-send-it)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

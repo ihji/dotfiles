@@ -7,6 +7,7 @@ export EDITOR="vim"
 
 # for Maven
 export MAVEN_OPTS="-Xmx2048m -XX:MaxPermSize=512m"
+export JAVA_HOME=`/usr/libexec/java_home`
 
 # for Android SDK
 ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
