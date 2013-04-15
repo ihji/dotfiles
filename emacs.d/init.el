@@ -54,8 +54,9 @@
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
 (setq my-el-get-packages
       '(
         ProofGeneral
@@ -65,14 +66,16 @@
         clojure-mode
         el-get   ;; el-get manages el-get
         haskell-mode
+        helm
         magit
         markdown-mode
         multiple-cursors
         nrepl ;; clojure repl client
-        scala-mode
-        window-number
+        scala-mode2
+        undo-tree
         yasnippet
         zenburn-theme
+        zencoding-mode
        ))
 (el-get 'sync my-el-get-packages)
 
@@ -84,17 +87,6 @@
 (setq TeX-PDF-mode t)
 (setq TeX-view-program-list '(("open" "open %o")))
 (setq TeX-view-program-selection '((output-pdf "open")))
-
-;; scala mode settings
-(eval-after-load "scala-mode"
-  '(define-key scala-mode-map (kbd "RET") 'newline-and-indent))
-
-;; window-number mode
-(autoload 'window-number-meta-mode "window-number"
-  "A global minor mode that enables use of the M- prefix to select
-windows, use `window-number-mode' to display the window numbers in
-the mode-line." t)
-(window-number-meta-mode 1)
 
 ;; ace jump mode settings
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -109,3 +101,15 @@ the mode-line." t)
 
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+
+;; undo-tree mode
+(global-undo-tree-mode)
+
+;; helm settings
+(global-set-key (kbd "C-c h") 'helm-mini)
+
+;; magit shortcut
+(global-set-key (kbd "C-c g") 'magit-status)
+
+;; zencoding mode
+(add-hook 'sgml-mode-hook 'zencoding-mode)
