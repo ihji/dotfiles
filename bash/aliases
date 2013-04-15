@@ -8,6 +8,8 @@ alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 
 alias g="git status"
+alias gd="git diff"
+alias gdd="git diff --cached"
 
 alias ropas="ssh ropas.snu.ac.kr"
 alias pushpop="ssh -AY stack.pushpop.net"

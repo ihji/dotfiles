@@ -2,24 +2,26 @@
 ;;(setq mac-command-modifier 'meta)
 ;;(setq mac-option-modifier nil)
 (tool-bar-mode 0)
+(scroll-bar-mode 0)
 (setq make-backup-files nil)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
 (setq default-input-method "korean-hangul")
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
+(ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(ido-mode 1)
 (global-auto-revert-mode 1)
 (define-key global-map (kbd "M-/") 'hippie-expand)
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
-(require 'dired)
+(require 'dired-x)
 (put 'dired-find-alternate-file 'disabled nil)
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (add-hook 'prog-mode-hook
   (lambda () (setq show-trailing-whitespace t)))
 (add-hook 'text-mode-hook 'turn-on-flyspell)
+(setq send-mail-function 'sendmail-send-it)
 
 ;; add all subdirectories of ~/.emacs.d/modes to load path
 ;; (progn
@@ -55,22 +57,23 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 (setq my-el-get-packages
-      '(el-get   ;; el-get manages el-get
-        auctex   ;; OSX: auctex requires autoconf
-        scala-mode
-        markdown-mode
-        ace-jump-mode
-        yasnippet
-        magit
-        clojure-mode
-        nrepl ;; clojure repl client
+      '(
         ProofGeneral
-        haskell-mode
+        ace-jump-mode
         artbollocks-mode
-        zenburn-theme
-        window-number
+        auctex   ;; OSX: auctex requires autoconf
+        clojure-mode
+        el-get   ;; el-get manages el-get
+        haskell-mode
+        magit
+        markdown-mode
         multiple-cursors
-        ))
+        nrepl ;; clojure repl client
+        scala-mode
+        window-number
+        yasnippet
+        zenburn-theme
+       ))
 (el-get 'sync my-el-get-packages)
 
 ;; autoload zenburn theme
@@ -86,6 +89,13 @@
 (eval-after-load "scala-mode"
   '(define-key scala-mode-map (kbd "RET") 'newline-and-indent))
 
+;; window-number mode
+(autoload 'window-number-meta-mode "window-number"
+  "A global minor mode that enables use of the M- prefix to select
+windows, use `window-number-mode' to display the window numbers in
+the mode-line." t)
+(window-number-meta-mode 1)
+
 ;; ace jump mode settings
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
@@ -94,28 +104,8 @@
 (setq yas/prompt-functions
   '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt yas/x-prompt yas/no-prompt))
 
-;; window-number mode settings
-(autoload 'window-number-meta-mode "window-number"
-  "A global minor mode that enables use of the M- prefix to select
-windows, use `window-number-mode' to display the window numbers in
-the mode-line." t)
-(window-number-meta-mode 1)
-
 ;; artbollocks mode
 (setq artbollocks nil)
 
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(send-mail-function (quote sendmail-send-it)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
