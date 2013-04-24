@@ -58,6 +58,7 @@
    ace-jump-mode
    auctex
    clojure-mode
+   expand-region
    haskell-mode
    helm
    magit
@@ -84,6 +85,9 @@
 
 ;; ace jump mode settings
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; expand-region settings
+(define-key global-map (kbd "C-=") 'er/expand-region)
 
 ;; yasnippet settings
 (yas-global-mode 1)
