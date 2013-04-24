@@ -87,8 +87,8 @@
 
 ;; yasnippet settings
 (yas-global-mode 1)
-(setq yas/prompt-functions
-  '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt yas/x-prompt yas/no-prompt))
+(setq yas-prompt-functions
+  '(yas-dropdown-prompt yas-ido-prompt yas-completing-prompt yas-x-prompt yas-no-prompt))
 
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
