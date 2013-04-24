@@ -15,6 +15,7 @@
 (global-auto-revert-mode 1)
 (define-key global-map (kbd "M-/") 'hippie-expand)
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
+(define-key global-map (kbd "RET") 'newline-and-indent)
 (require 'dired-x)
 (put 'dired-find-alternate-file 'disabled nil)
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
@@ -41,43 +42,36 @@
   (setenv "PATH" (mapconcat 'identity exec-path path-separator))
 ))
 
-;; add marmalade repo
+;; add marmalade, melpa repo
 (require 'package)
 (add-to-list 'package-archives
-  '("marmalade" .
-    "http://marmalade-repo.org/packages/"))
+  '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-;; initialize el-get
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
-(setq my-el-get-packages
-      '(
-        ProofGeneral
-        ace-jump-mode
-        artbollocks-mode
-        auctex   ;; OSX: auctex requires autoconf
-        clojure-mode
-        el-get   ;; el-get manages el-get
-        haskell-mode
-        helm
-        magit
-        markdown-mode
-        multiple-cursors
-        nrepl ;; clojure repl client
-        scala-mode2
-        undo-tree
-        yasnippet
-        zenburn-theme
-        zencoding-mode
-       ))
-(el-get 'sync my-el-get-packages)
+(mapc
+ (lambda (package)
+   (or (package-installed-p package)
+       (package-install package)))
+ '(
+   ace-jump-mode
+   auctex
+   clojure-mode
+   haskell-mode
+   helm
+   magit
+   markdown-mode
+   multiple-cursors
+   nrepl ;; clojure repl client
+   scala-mode2
+   undo-tree
+   writegood-mode
+   yasnippet
+   zenburn-theme
+   zencoding-mode
+   )
+ )
 
 ;; autoload zenburn theme
 (load-theme 'zenburn t)
@@ -92,12 +86,9 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; yasnippet settings
-(yas/global-mode 1)
+(yas-global-mode 1)
 (setq yas/prompt-functions
   '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt yas/x-prompt yas/no-prompt))
-
-;; artbollocks mode
-(setq artbollocks nil)
 
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
