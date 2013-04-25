@@ -35,7 +35,7 @@
 ;; setting paths
 (if (eq system-type 'darwin) (progn
   (setq exec-path (append (list
-    "~/.homebrew/bin"
+    "/Users/ihji/.homebrew/bin"
     "/usr/texbin"
     "/usr/local/bin"
   ) exec-path))
