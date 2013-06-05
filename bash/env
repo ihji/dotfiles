@@ -5,6 +5,8 @@ export LC_ALL="en_US.UTF-8"
 
 export EDITOR="vim"
 
+export GDFONTPATH=/Library/Fonts
+
 # for Maven
 export MAVEN_OPTS="-Xmx2048m -XX:MaxPermSize=512m"
 export JAVA_HOME=`/usr/libexec/java_home`
@@ -12,6 +14,10 @@ export JAVA_HOME=`/usr/libexec/java_home`
 # for Android SDK
 ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
 export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH
+
+# for Postgres
+POSTGRES_BIN="/Applications/Postgres.app/Contents/MacOS/bin"
+export PATH=$POSTGRES_BIN:$PATH
 
 # for npm
 NPM_SCRIPT_PATH="/Users/ihji/.homebrew/share/npm/bin"
