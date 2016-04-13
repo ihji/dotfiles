@@ -11,3 +11,5 @@
 	trustExitCode = true
 [push]
 	default = matching
+[core]
+	excludesfile = /Users/ihji/.gitignore_global

@@ -15,6 +15,7 @@ Bundle 'gmarik/vundle'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'jnurmine/Zenburn'
 colors zenburn
+Bundle 'scrooloose/nerdtree'
 
 " settings
 filetype plugin indent on

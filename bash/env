@@ -7,6 +7,10 @@ export EDITOR="vim"
 
 export GDFONTPATH=/Library/Fonts
 
+# homebrew
+HOMEBREW_PATH="/Users/ihji/.homebrew/bin"
+export PATH=$HOMEBREW_PATH:$PATH
+
 # for Maven
 export MAVEN_OPTS="-Xmx2048m -XX:MaxPermSize=512m"
 export JAVA_HOME=`/usr/libexec/java_home`
@@ -15,23 +19,19 @@ export JAVA_HOME=`/usr/libexec/java_home`
 ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
 export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH
 
-# for Postgres
-POSTGRES_BIN="/Applications/Postgres.app/Contents/MacOS/bin"
-export PATH=$POSTGRES_BIN:$PATH
-
 # for npm
 NPM_SCRIPT_PATH="/Users/ihji/.homebrew/share/npm/bin"
 export PATH=$NPM_SCRIPT_PATH:$PATH
-
-# for python
-PYTHON_SCRIPT_PATH="/Users/ihji/.homebrew/share/python"
-PYTHON3_SCRIPT_PATH="/Users/ihji/.homebrew/share/python3"
-export PATH=$PYTHON_SCRIPT_PATH:$PYTHON3_SCRIPT_PATH:$PATH
 
 # for ruby
 RUBY_SCRIPT_PATH="/Users/ihji/.homebrew/opt/ruby/bin"
 export PATH=$RUBY_SCRIPT_PATH:$PATH
 
-# homebrew
-HOMEBREW_PATH="/Users/ihji/.homebrew/bin"
-export PATH=$HOMEBREW_PATH:$PATH
+# opam
+eval `opam config env`
+
+# Add GHC 7.10.1 to the PATH, via https://ghcformacosx.github.io/
+export GHC_DOT_APP="/Applications/ghc-7.10.1.app"
+if [ -d "$GHC_DOT_APP" ]; then
+  export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi

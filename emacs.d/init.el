@@ -33,14 +33,16 @@
    auctex
    auto-complete
    clojure-mode
+   cider ;; clojure minor mode
    expand-region
+   gnuplot
    haskell-mode
    helm
    js2-mode
    magit
    markdown-mode
+   monokai-theme
    multiple-cursors
-   nrepl ;; clojure repl client
    projectile
    scala-mode2
    undo-tree
@@ -79,12 +81,23 @@
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (define-key global-map (kbd "C-c a") 'org-agenda)
+(define-key global-map (kbd "S-SPC") 'toggle-input-method)
 
-;; autoload zenburn theme
-(load-theme 'zenburn t)
+;; resizing windows
+(global-set-key (kbd "M-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-<down>") 'shrink-window)
+(global-set-key (kbd "M-<up>") 'enlarge-window)
+
+;; autoload theme
+(load-theme 'monokai t)
 
 ;; org-mode settings
-(setq org-agenda-files '("." "~/Documents/org"))
+(setq org-agenda-files '("~/Documents/org"))
+
+;; markdown-mode settings
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; auctex settings
 (setq-default TeX-master nil)
@@ -124,3 +137,7 @@
 
 ;; zencoding mode
 (add-hook 'sgml-mode-hook 'zencoding-mode)
+
+
+;; ProofGeneral mode (manually installed)
+(load-file "~/.emacs.d/modes/ProofGeneral-4.2/generic/proof-site.el")
