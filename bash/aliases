@@ -11,15 +11,6 @@ alias g="git status"
 alias gd="git diff"
 alias gdd="git diff --cached"
 
-alias ropas="ssh ropas.snu.ac.kr"
-alias pushpop="ssh -AY stack.pushpop.net"
-alias styped="ssh -AY simplytyped.com"
-
-# berkeley
-alias fol="ssh -AY fold.eecs.berkeley.edu"
-alias noddy="ssh -AY noddy.cs.berkeley.edu"
-alias orchid="ssh -AY orchid.cs.berkeley.edu"
-
 # bind database
 
 bind '"[A":"cd ..\n"'

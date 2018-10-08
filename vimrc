@@ -2,21 +2,6 @@ set nocompatible
 filetype on " workaround for OSX vim bug
 filetype off
 
-" one-time bootstrap required for Vundle itself
-" $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" :BundleInstall
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-Bundle 'derekwyatt/vim-scala'
-Bundle 'jnurmine/Zenburn'
-colors zenburn
-Bundle 'scrooloose/nerdtree'
-
 " settings
 filetype plugin indent on
 syntax on

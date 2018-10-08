@@ -8,7 +8,7 @@ export EDITOR="vim"
 export GDFONTPATH=/Library/Fonts
 
 # homebrew
-HOMEBREW_PATH="/Users/ihji/.homebrew/bin"
+HOMEBREW_PATH="~/.homebrew/bin"
 export PATH=$HOMEBREW_PATH:$PATH
 
 # for Maven
@@ -16,15 +16,15 @@ export MAVEN_OPTS="-Xmx2048m -XX:MaxPermSize=512m"
 export JAVA_HOME=`/usr/libexec/java_home`
 
 # for Android SDK
-ANDROID_SDK="/Users/ihji/Works/android-sdk-macosx"
+ANDROID_SDK="~/.android-sdk-macosx"
 export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH
 
 # for npm
-NPM_SCRIPT_PATH="/Users/ihji/.homebrew/share/npm/bin"
+NPM_SCRIPT_PATH="~/.homebrew/share/npm/bin"
 export PATH=$NPM_SCRIPT_PATH:$PATH
 
 # for ruby
-RUBY_SCRIPT_PATH="/Users/ihji/.homebrew/opt/ruby/bin"
+RUBY_SCRIPT_PATH="~/.homebrew/opt/ruby/bin"
 export PATH=$RUBY_SCRIPT_PATH:$PATH
 
 # opam
