@@ -28,7 +28,7 @@ RUBY_SCRIPT_PATH="~/.homebrew/opt/ruby/bin"
 export PATH=$RUBY_SCRIPT_PATH:$PATH
 
 # opam
-eval `opam config env`
+command -v opam >/dev/null && eval `opam config env`
 
 # Add GHC 7.10.3 to the PATH, via https://ghcformacosx.github.io/
 export GHC_DOT_APP="/Applications/ghc-7.10.3.app"
