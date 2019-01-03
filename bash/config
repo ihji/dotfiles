@@ -3,7 +3,7 @@
 brew_prefix=`brew --prefix`
 
 if [ -f $brew_prefix/etc/bash_completion ]; then
-	. $brew_prefix/etc/bash_completion
+    . $brew_prefix/etc/bash_completion
 fi
 
 # prompt setting
@@ -19,4 +19,8 @@ if [ -f $brew_prefix/etc/bash_completion.d/git-prompt.sh ]; then
     PS1="[$EXITCODE $TIME]:$DIR $GIT\n$HOST $USERNAME$ "
 else
     PS1="[$EXITCODE $TIME]:$DIR\n$HOST $USERNAME$ "
+fi
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    exec tmux
 fi
