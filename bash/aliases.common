@@ -2,8 +2,7 @@
 
 # alias database
 
-alias ls="ls -GF"
-alias l="ls -GFal"
+alias l="ls -al"
 alias grep="grep --color=auto"
 
 alias g="git status"

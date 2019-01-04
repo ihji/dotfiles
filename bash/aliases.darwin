@@ -1,4 +1,6 @@
 # macos specific aliases
 
+alias ls="ls -GF"
+
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
