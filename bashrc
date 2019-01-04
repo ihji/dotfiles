@@ -1,7 +1,7 @@
 function link_dotfiles {
-    ln -vsnf ~/.dotfiles/vimrc ~/.vimrc
-    ln -vsnf ~/.dotfiles/emacs.d ~/.emacs.d
-    ln -vsnf ~/.dotfiles/gitconfig ~/.gitconfig
+    ln -vs  ~/.dotfiles/vimrc ~/.vimrc
+    ln -vsn ~/.dotfiles/emacs.d ~/.emacs.d
+    ln -vs  ~/.dotfiles/gitconfig ~/.gitconfig
 }
 
 . ~/.dotfiles/bash/env
