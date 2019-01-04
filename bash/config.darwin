@@ -1,0 +1,22 @@
+# macos specific misc config
+
+brew_prefix=`brew --prefix`
+
+if [ -f $brew_prefix/etc/bash_completion ]; then
+    . $brew_prefix/etc/bash_completion
+fi
+
+# prompt setting
+. ~/.dotfiles/bash/colors
+TIME="\[$EBLACK\]\[$BWHITE\]\t\[$NO_COLOR\]"
+DIR="\w"
+GIT="\$(__git_ps1 '(%s)')"
+HOST="\[$EGREEN\]\h\[$NO_COLOR\]"
+USERNAME="\u"
+EXITCODE="\$(if [[ \$? == 0 ]]; then echo \"\[$EGREEN\]\$?\"; else echo \"\[$ERED\]\$?\"; fi)\[$NO_COLOR\]"
+if [ -f $brew_prefix/etc/bash_completion.d/git-prompt.sh ]; then
+    . $brew_prefix/etc/bash_completion.d/git-prompt.sh
+    PS1="[$EXITCODE $TIME]:$DIR $GIT\n$HOST $USERNAME$ "
+else
+    PS1="[$EXITCODE $TIME]:$DIR\n$HOST $USERNAME$ "
+fi

@@ -1,16 +1,12 @@
-# alias database
+# alias
 
-alias ls="ls -GF"
-alias l="ls -GFal"
-alias grep="grep --color=auto"
+case "$(uname -s)" in
+    Linux*)
+        . ~/.dotfiles/bash/aliases.linux
+        ;;
+    Darwin*)
+        . ~/.dotfiles/bash/aliases.darwin
+        ;;
+esac
 
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
-alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-
-alias g="git status"
-alias gd="git diff"
-alias gdd="git diff --cached"
-
-# bind database
-
-bind '"[A":"cd ..\n"'
+. ~/.dotfiles/bash/aliases.common

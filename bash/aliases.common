@@ -1,0 +1,15 @@
+# common aliases
+
+# alias database
+
+alias ls="ls -GF"
+alias l="ls -GFal"
+alias grep="grep --color=auto"
+
+alias g="git status"
+alias gd="git diff"
+alias gdd="git diff --cached"
+
+# bind database
+
+bind '"[A":"cd ..\n"'
