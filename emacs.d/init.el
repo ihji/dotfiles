@@ -19,7 +19,7 @@
 ;; add marmalade, melpa repo
 (require 'package)
 (add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/"))
+  '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
   '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
@@ -44,7 +44,8 @@
    monokai-theme
    multiple-cursors
    projectile
-   scala-mode2
+   proof-general
+   scala-mode
    undo-tree
    writegood-mode
    yasnippet
@@ -138,6 +139,6 @@
 ;; zencoding mode
 (add-hook 'sgml-mode-hook 'zencoding-mode)
 
-
-;; ProofGeneral mode (manually installed)
-(load-file "~/.emacs.d/modes/ProofGeneral-4.2/generic/proof-site.el")
+;; auto-generated custom config to custom.el
+(setq custom-file "~/.emacs.d/custom.el")
+(if (file-exists-p custom-file) (load custom-file))
