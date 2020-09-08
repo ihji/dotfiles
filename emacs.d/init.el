@@ -43,6 +43,7 @@
    markdown-mode
    monokai-theme
    multiple-cursors
+   neotree
    projectile
    proof-general
    scala-mode
@@ -64,6 +65,7 @@
 (setq initial-scratch-message nil)
 (setq default-input-method "korean-hangul")
 (show-paren-mode 1)
+(column-number-mode 1)
 (setq-default indent-tabs-mode nil)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
