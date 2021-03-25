@@ -1,10 +1,14 @@
 # misc config
 
+# init auto completion
+autoload -U compinit && compinit
+
 # pure prompt config
 fpath+=~/.dotfiles/zsh/pure
 zstyle :prompt:pure:path color default
+zstyle :prompt:pure:git:branch color green
 zstyle :prompt:pure:prompt:success color green
 
 # init prompt
-autoload -U promptinit; promptinit
+autoload -U promptinit && promptinit
 prompt pure
