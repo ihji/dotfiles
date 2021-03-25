@@ -11,6 +11,7 @@ set ai
 set si
 set ts=4
 set sw=4
+set re=0  " workaround for groovy syntax error on macos
 set expandtab
 "set bg=dark
 set wildmode=longest:full
