@@ -1,5 +1,8 @@
 # misc config
 
+# emacs binding
+bindkey -e
+
 # init auto completion
 autoload -U compinit && compinit
 
