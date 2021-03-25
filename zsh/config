@@ -1,7 +1,9 @@
 # misc config
 
-# pure prompt
+# pure prompt config
 fpath+=~/.dotfiles/zsh/pure
+zstyle :prompt:pure:path color default
+zstyle :prompt:pure:prompt:success color green
 
 # init prompt
 autoload -U promptinit; promptinit
