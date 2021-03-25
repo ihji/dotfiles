@@ -1,0 +1,8 @@
+# misc config
+
+# pure prompt
+fpath+=~/.dotfiles/zsh/pure
+
+# init prompt
+autoload -U promptinit; promptinit
+prompt pure
