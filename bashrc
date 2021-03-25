@@ -3,14 +3,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
     exec tmux
 fi
 
-function link_dotfiles {
-    ln -vsn ~/.dotfiles/emacs.d ~/.emacs.d
-    ln -vs  ~/.dotfiles/vimrc ~/.vimrc
-    ln -vs  ~/.dotfiles/gitconfig ~/.gitconfig
-    ln -vs  ~/.dotfiles/tmux.conf ~/.tmux.conf
-}
-
-. ~/.dotfiles/bash/env
-. ~/.dotfiles/bash/aliases
+. ~/.dotfiles/common/env
+. ~/.dotfiles/common/aliases
 . ~/.dotfiles/bash/config
 

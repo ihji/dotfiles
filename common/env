@@ -1,0 +1,12 @@
+# environment variables
+
+case "$(uname -s)" in
+    Linux*)
+        . ~/.dotfiles/common/env.linux
+        ;;
+    Darwin*)
+        . ~/.dotfiles/common/env.darwin
+        ;;
+esac
+
+. ~/.dotfiles/common/env.common

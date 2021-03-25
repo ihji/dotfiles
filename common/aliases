@@ -1,0 +1,12 @@
+# alias
+
+case "$(uname -s)" in
+    Linux*)
+        . ~/.dotfiles/common/aliases.linux
+        ;;
+    Darwin*)
+        . ~/.dotfiles/common/aliases.darwin
+        ;;
+esac
+
+. ~/.dotfiles/common/aliases.common
