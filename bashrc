@@ -3,7 +3,6 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
     exec tmux
 fi
 
-. ~/.dotfiles/common/env
 . ~/.dotfiles/common/aliases
 . ~/.dotfiles/common/config
 . ~/.dotfiles/bash/config
