@@ -15,3 +15,5 @@ fi
 ln -vs ~/.dotfiles/home.profile ~/.profile
 ln -vs ~/.dotfiles/home.profile ~/.zprofile
 ln -vs ~/.dotfiles/home.zshrc ~/.zshrc
+
+(cd ~/.dotfiles && git submodule update --init)
