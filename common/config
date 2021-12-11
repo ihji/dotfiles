@@ -1,6 +1,12 @@
-# common misc config
+# misc config
 
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
+case "$(uname -s)" in
+    Linux*)
+        . ~/.dotfiles/common/config.linux
+        ;;
+    Darwin*)
+        . ~/.dotfiles/common/config.darwin
+        ;;
+esac
 
+. ~/.dotfiles/common/config.common
