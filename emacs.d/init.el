@@ -29,7 +29,6 @@
    (or (package-installed-p package)
        (package-install package)))
  '(
-   ace-jump-mode
    auctex
    auto-complete
    clojure-mode
@@ -111,9 +110,6 @@
 (setq TeX-view-program-selection '((output-pdf "open")))
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
-
-;; ace jump mode settings
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; expand-region settings
 (define-key global-map (kbd "C-=") 'er/expand-region)
