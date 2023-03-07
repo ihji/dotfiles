@@ -114,12 +114,6 @@
   :bind
   ("C->" . 'mc/mark-next-like-this))
 
-;; undo-tree mode
-(use-package undo-tree
-  :ensure t
-  :config
-  (global-undo-tree-mode))
-
 ;; projectile mode
 (use-package projectile
   :ensure t
