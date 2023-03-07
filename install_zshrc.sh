@@ -12,8 +12,8 @@ if [ -f ~/.zshrc ] && [ ! -f ~/.zshrc.orig ]; then
     mv ~/.zshrc ~/.zshrc.orig
 fi
 
-cp -nv ~/.dotfiles/home.profile ~/.zprofile
+cp -nv ~/.dotfiles/home.profile ~/.profile
 cp -nv ~/.dotfiles/home.zshrc ~/.zshrc
-ln -vs ~/.zprofile ~/.profile
+ln -vs ~/.profile ~/.zprofile
 
 (cd ~/.dotfiles && git submodule update --init)

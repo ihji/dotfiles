@@ -12,6 +12,6 @@ if [ -f ~/.bashrc ] && [ ! -f ~/.bashrc.orig ]; then
     mv ~/.bashrc ~/.bashrc.orig
 fi
 
-cp -nv ~/.dotfiles/home.profile ~/.bash_profile
+cp -nv ~/.dotfiles/home.profile ~/.profile
 cp -nv ~/.dotfiles/home.bashrc ~/.bashrc
-ln -vs ~/.bash_profile ~/.profile
+ln -vs ~/.profile ~/.bash_profile
