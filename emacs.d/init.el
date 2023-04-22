@@ -8,12 +8,20 @@
 
 ;; setting paths
 (if (eq system-type 'darwin) (progn
-  (setq exec-path (append (list
-    "/Users/ihji/.homebrew/bin"
-    "/usr/texbin"
-    "/usr/local/bin"
-  ) exec-path))
-  (setenv "PATH" (mapconcat 'identity exec-path path-separator))
+  (defun set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match
+that used by the user's shell.
+
+This is particularly useful under Mac OS X and macOS, where GUI
+apps are not started from a shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string
+			  "[ \t\n]*$" "" (shell-command-to-string
+					  "$SHELL --login -c 'echo $PATH'"
+					  ))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+  (set-exec-path-from-shell-PATH)
 ))
 
 ;; initialize use-package
@@ -118,7 +126,7 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-global-mode))
+  (projectile-mode))
 
 ;; helm settings
 (use-package helm
@@ -140,6 +148,15 @@
 (use-package writegood-mode
   :ensure t)
 
+;; company-mode
+(use-package company
+  :ensure t)
+
+;; flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 ;; neotree
 (use-package neotree
   :ensure t)
@@ -150,10 +167,6 @@
 
 ;; haskell-mode
 (use-package haskell-mode
-  :ensure t)
-
-;; auto-complete
-(use-package auto-complete
   :ensure t)
 
 ;; gnuplot
@@ -171,6 +184,42 @@
 ;; cider
 (use-package cider
   :ensure t)
+
+
+;; BEGIN: ocaml configuration
+
+(use-package tuareg
+  :ensure t
+  :mode (("\\.ocamlinit\\'" . tuareg-mode)))
+
+(use-package dune
+  :ensure t)
+
+;; Merlin configuration
+(use-package merlin
+  :ensure t
+  :config
+  (add-hook 'tuareg-mode-hook #'merlin-mode)
+  (add-hook 'merlin-mode-hook #'company-mode)
+  ;; we're using flycheck instead
+  (setq merlin-error-after-save nil))
+
+(use-package merlin-eldoc
+  :ensure t
+  :hook ((tuareg-mode) . merlin-eldoc-setup))
+
+;; This uses Merlin internally
+(use-package flycheck-ocaml
+  :ensure t
+  :config
+  (flycheck-ocaml-setup))
+
+(use-package ocamlformat
+  :ensure t
+  :hook (before-save . ocamlformat-before-save))
+
+;; END: ocaml configuration
+
 
 ;; auto-generated custom config to custom.el
 (setq custom-file "~/.emacs.d/custom.el")
