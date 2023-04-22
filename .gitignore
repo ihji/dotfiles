@@ -1,3 +1,2 @@
-emacs.d/el-get
-emacs.d/elpa
-emacs.d/url
+emacs.d/*
+!emacs.d/init.el
