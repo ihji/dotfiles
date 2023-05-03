@@ -204,10 +204,6 @@ apps are not started from a shell."
   ;; we're using flycheck instead
   (setq merlin-error-after-save nil))
 
-(use-package merlin-eldoc
-  :ensure t
-  :hook ((tuareg-mode) . merlin-eldoc-setup))
-
 ;; This uses Merlin internally
 (use-package flycheck-ocaml
   :ensure t
