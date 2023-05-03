@@ -36,6 +36,7 @@ apps are not started from a shell."
 ;; general settings
 ;;(setq mac-command-modifier 'meta)
 ;;(setq mac-option-modifier nil)
+(desktop-save-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (setq make-backup-files nil)
@@ -45,9 +46,6 @@ apps are not started from a shell."
 (show-paren-mode 1)
 (column-number-mode 1)
 (setq-default indent-tabs-mode nil)
-(ido-mode 1)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
 (global-auto-revert-mode 1)
 (require 'dired-x)
 (put 'dired-find-alternate-file 'disabled nil)
@@ -72,6 +70,33 @@ apps are not started from a shell."
 (global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-<down>") 'shrink-window)
 (global-set-key (kbd "M-<up>") 'enlarge-window)
+
+;; windmove
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+
+;; vertico mode
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+  :ensure t
+  :init
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+;; Enable rich annotations using the Marginalia package
+(use-package marginalia
+  :ensure t
+  :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
+  :init
+  (marginalia-mode))
 
 ;; autoload theme
 (use-package monokai-theme
@@ -125,8 +150,10 @@ apps are not started from a shell."
 ;; projectile mode
 (use-package projectile
   :ensure t
-  :config
-  (projectile-mode))
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)))
 
 ;; helm settings
 (use-package helm
@@ -157,9 +184,18 @@ apps are not started from a shell."
   :ensure t
   :init (global-flycheck-mode))
 
-;; neotree
-(use-package neotree
-  :ensure t)
+(use-package treemacs
+  :ensure t
+  :defer t
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t d"   . treemacs-select-directory)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
 
 ;; scala-mode
 (use-package scala-mode
