@@ -65,12 +65,6 @@ apps are not started from a shell."
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (define-key global-map (kbd "S-SPC") 'toggle-input-method)
 
-;; resizing windows
-(global-set-key (kbd "M-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-<down>") 'shrink-window)
-(global-set-key (kbd "M-<up>") 'enlarge-window)
-
 ;; windmove
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
@@ -239,6 +233,20 @@ apps are not started from a shell."
   (add-hook 'merlin-mode-hook #'company-mode)
   ;; we're using flycheck instead
   (setq merlin-error-after-save nil))
+
+;; Merlin eldoc
+(use-package merlin-eldoc
+  :after merlin
+  :ensure t
+  :custom
+  (eldoc-echo-area-use-multiline-p t) ; use multiple lines when necessary
+  (merlin-eldoc-max-lines 8)          ; but not more than 8
+  (merlin-eldoc-type-verbosity 'min)  ; don't display verbose types
+  (merlin-eldoc-occurrences t)        ; highlight all ident occurrences
+  :bind (:map merlin-mode-map
+              ("C-c m p" . merlin-eldoc-jump-to-prev-occurrence)
+              ("C-c m n" . merlin-eldoc-jump-to-next-occurrence))
+  :hook ((tuareg-mode) . merlin-eldoc-setup))
 
 ;; This uses Merlin internally
 (use-package flycheck-ocaml
