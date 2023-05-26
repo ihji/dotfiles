@@ -236,6 +236,7 @@ apps are not started from a shell."
   :config
   (add-hook 'tuareg-mode-hook #'merlin-mode)
   (add-hook 'merlin-mode-hook #'company-mode)
+  (setq merlin-locate-in-new-window 'never)
   ;; we're using flycheck instead
   (setq merlin-error-after-save nil))
 
