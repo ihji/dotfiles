@@ -39,6 +39,7 @@ apps are not started from a shell."
 (desktop-save-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(setq scroll-preserve-screen-position t)
 (setq make-backup-files nil)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
