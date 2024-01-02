@@ -56,9 +56,38 @@ apps are not started from a shell."
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 (setq send-mail-function 'sendmail-send-it)
 
+;; nerd-icons
+(use-package nerd-icons
+  ;; :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
+
+;; doom-modeline
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
 ;; org-mode settings
-(setq org-agenda-files '("~/Documents/org"))
-(define-key global-map (kbd "C-c a") 'org-agenda)
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/Documents/org-roam/"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
 
 ;; additional global shortcuts
 (define-key global-map (kbd "M-/") 'hippie-expand)
@@ -76,6 +105,12 @@ apps are not started from a shell."
   "Make the current window always display this buffer."
   nil " sticky" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
+
+;; eyebrowse mode
+(use-package eyebrowse
+  :ensure t
+  :init
+  (eyebrowse-mode))
 
 ;; vertico mode
 (use-package vertico
@@ -146,14 +181,6 @@ apps are not started from a shell."
   :ensure t
   :bind
   ("C->" . 'mc/mark-next-like-this))
-
-;; projectile mode
-(use-package projectile
-  :ensure t
-  :init
-  (projectile-mode +1)
-  :bind (:map projectile-mode-map
-              ("C-c p" . projectile-command-map)))
 
 ;; helm settings
 (use-package helm
