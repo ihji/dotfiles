@@ -34,8 +34,8 @@ apps are not started from a shell."
            (package-install 'use-package)))
 
 ;; general settings
-;;(setq mac-command-modifier 'meta)
 ;;(setq mac-option-modifier nil)
+(setq mac-command-modifier 'meta)
 (desktop-save-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -53,7 +53,6 @@ apps are not started from a shell."
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (add-hook 'prog-mode-hook
   (lambda () (setq show-trailing-whitespace t)))
-(add-hook 'text-mode-hook 'turn-on-flyspell)
 (setq send-mail-function 'sendmail-send-it)
 
 ;; nerd-icons
@@ -105,6 +104,16 @@ apps are not started from a shell."
   "Make the current window always display this buffer."
   nil " sticky" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
+
+;; gptel
+(use-package gptel
+  :ensure t
+  :init
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '(llama3.1:latest))
+)
 
 ;; eyebrowse mode
 (use-package eyebrowse
