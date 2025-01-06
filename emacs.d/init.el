@@ -55,6 +55,10 @@ apps are not started from a shell."
   (lambda () (setq show-trailing-whitespace t)))
 (setq send-mail-function 'sendmail-send-it)
 
+(winner-mode 1)
+(global-set-key (kbd "C-c ;")  'winner-undo)
+(global-set-key (kbd "C-c '")  'winner-redo)
+
 ;; nerd-icons
 (use-package nerd-icons
   ;; :custom
@@ -89,16 +93,16 @@ apps are not started from a shell."
   (require 'org-roam-protocol))
 
 ;; additional global shortcuts
-(define-key global-map (kbd "M-/") 'hippie-expand)
-(define-key global-map (kbd "C-x C-b") 'ibuffer)
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(define-key global-map (kbd "S-SPC") 'toggle-input-method)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;; windmove
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)
-(global-set-key (kbd "C-c <down>")  'windmove-down)
+(global-set-key (kbd "C-c h")  'windmove-left)
+(global-set-key (kbd "C-c l") 'windmove-right)
+(global-set-key (kbd "C-c k")    'windmove-up)
+(global-set-key (kbd "C-c j")  'windmove-down)
 
 (define-minor-mode sticky-buffer-mode
   "Make the current window always display this buffer."
@@ -195,7 +199,7 @@ apps are not started from a shell."
 (use-package helm
   :ensure t
   :bind
-  ("C-c h" . 'helm-mini))
+  ("C-c m" . 'helm-mini))
 
 ;; magit shortcut
 (use-package magit
