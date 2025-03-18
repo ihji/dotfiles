@@ -268,7 +268,7 @@ apps are not started from a shell."
   :ensure t)
 
 (use-package lsp-mode
-  :init (setq lsp-keymap-prefix "C-c p")
+  :init (setq lsp-keymap-prefix "M-p")
   :ensure t
   :hook ((tuareg-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
