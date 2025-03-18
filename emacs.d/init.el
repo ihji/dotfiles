@@ -54,6 +54,7 @@ apps are not started from a shell."
 (add-hook 'prog-mode-hook
   (lambda () (setq show-trailing-whitespace t)))
 (setq send-mail-function 'sendmail-send-it)
+(which-key-mode)
 
 (winner-mode 1)
 (global-set-key (kbd "C-c ;")  'winner-undo)
@@ -104,11 +105,6 @@ apps are not started from a shell."
 (global-set-key (kbd "C-c k")    'windmove-up)
 (global-set-key (kbd "C-c j")  'windmove-down)
 
-(define-minor-mode sticky-buffer-mode
-  "Make the current window always display this buffer."
-  nil " sticky" nil
-  (set-window-dedicated-p (selected-window) sticky-buffer-mode))
-
 ;; gptel
 (use-package gptel
   :ensure t
@@ -116,7 +112,7 @@ apps are not started from a shell."
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
     :stream t
-    :models '(llama3.1:latest))
+    :models '(deepseek-r1:14b llama3.1:latest))
 )
 
 ;; eyebrowse mode
@@ -261,51 +257,31 @@ apps are not started from a shell."
 (use-package cider
   :ensure t)
 
-
-;; BEGIN: ocaml configuration
-
+;; ocaml-mode
 (use-package tuareg
   :ensure t
+  :custom (tuareg-opam-insinuate t)
   :mode (("\\.ocamlinit\\'" . tuareg-mode)))
 
+;; ocaml dune-mode
 (use-package dune
   :ensure t)
 
-;; Merlin configuration
-(use-package merlin
+(use-package lsp-mode
+  :init (setq lsp-keymap-prefix "C-c p")
   :ensure t
+  :hook ((tuareg-mode . lsp-deferred)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands (lsp lsp-deferred))
+
+(use-package apheleia
+  :ensure t
+  :hook (tuareg-mode . apheleia-mode)
   :config
-  (add-hook 'tuareg-mode-hook #'merlin-mode)
-  (add-hook 'merlin-mode-hook #'company-mode)
-  (setq merlin-locate-in-new-window 'never)
-  ;; we're using flycheck instead
-  (setq merlin-error-after-save nil))
-
-;; Merlin eldoc
-(use-package merlin-eldoc
-  :after merlin
-  :ensure t
-  :custom
-  (eldoc-echo-area-use-multiline-p t) ; use multiple lines when necessary
-  (merlin-eldoc-max-lines 8)          ; but not more than 8
-  (merlin-eldoc-type-verbosity 'min)  ; don't display verbose types
-  (merlin-eldoc-occurrences t)        ; highlight all ident occurrences
-  :bind (:map merlin-mode-map
-              ("C-c m p" . merlin-eldoc-jump-to-prev-occurrence)
-              ("C-c m n" . merlin-eldoc-jump-to-next-occurrence))
-  :hook ((tuareg-mode) . merlin-eldoc-setup))
-
-;; This uses Merlin internally
-(use-package flycheck-ocaml
-  :ensure t
-  :config
-  (flycheck-ocaml-setup))
-
-(use-package ocamlformat
-  :ensure t
-  :hook (before-save . ocamlformat-before-save))
-
-;; END: ocaml configuration
+  (setf (alist-get 'ocamlformat apheleia-formatters)
+        '("opam" "exec" "--" "ocamlformat" "--impl" "-"))
+  (setf (alist-get 'tuareg-mode apheleia-mode-alist)
+        '(ocamlformat)))
 
 
 ;; auto-generated custom config to custom.el
