@@ -275,13 +275,7 @@ apps are not started from a shell."
   :commands (lsp lsp-deferred))
 
 (use-package apheleia
-  :ensure t
-  :hook (tuareg-mode . apheleia-mode)
-  :config
-  (setf (alist-get 'ocamlformat apheleia-formatters)
-        '("opam" "exec" "--" "ocamlformat" "--impl" "-"))
-  (setf (alist-get 'tuareg-mode apheleia-mode-alist)
-        '(ocamlformat)))
+  :ensure t)
 
 
 ;; auto-generated custom config to custom.el
