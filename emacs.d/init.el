@@ -1,33 +1,8 @@
-;; add all subdirectories of ~/.emacs.d/modes to load path
-;; (progn
-;;   (cd "~/.emacs.d/modes")
-;;   (normal-top-level-add-subdirs-to-load-path)
-;;   (cd "~/"))
-;; add themes directory to theme load path
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-
-;; setting paths
-(if (eq system-type 'darwin) (progn
-  (defun set-exec-path-from-shell-PATH ()
-  "Set up Emacs' `exec-path' and PATH environment variable to match
-that used by the user's shell.
-
-This is particularly useful under Mac OS X and macOS, where GUI
-apps are not started from a shell."
-  (interactive)
-  (let ((path-from-shell (replace-regexp-in-string
-			  "[ \t\n]*$" "" (shell-command-to-string
-					  "$SHELL --login -c 'echo $PATH'"
-					  ))))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-  (set-exec-path-from-shell-PATH)
-))
 
 ;; initialize use-package
 (require 'package)
 (add-to-list 'package-archives
-  '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 (or (package-installed-p 'use-package)
     (progn (package-refresh-contents)
@@ -52,13 +27,21 @@ apps are not started from a shell."
 (put 'dired-find-alternate-file 'disabled nil)
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (add-hook 'prog-mode-hook
-  (lambda () (setq show-trailing-whitespace t)))
+          (lambda () (setq show-trailing-whitespace t)))
 (setq send-mail-function 'sendmail-send-it)
 (which-key-mode)
 
 (winner-mode 1)
 (global-set-key (kbd "C-c ;")  'winner-undo)
 (global-set-key (kbd "C-c '")  'winner-redo)
+
+
+;; set exec-path
+(use-package exec-path-from-shell
+  :ensure t
+  :init (when (memq window-system '(mac ns x))
+          (exec-path-from-shell-initialize))
+  )
 
 ;; nerd-icons
 (use-package nerd-icons
@@ -113,7 +96,7 @@ apps are not started from a shell."
     :host "localhost:11434"
     :stream t
     :models '(deepseek-r1:14b llama3.1:latest))
-)
+  )
 
 ;; eyebrowse mode
 (use-package eyebrowse
@@ -273,6 +256,16 @@ apps are not started from a shell."
   :hook ((tuareg-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
+
+(use-package lsp-ui
+  :ensure t
+  :config
+  (setq lsp-ui-sideline-show-diagnostics t)
+  (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-position 'bottom)
+  )
 
 (use-package apheleia
   :ensure t)
