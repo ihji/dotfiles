@@ -39,8 +39,10 @@
 ;; set exec-path
 (use-package exec-path-from-shell
   :ensure t
-  :init (when (memq window-system '(mac ns x))
-          (exec-path-from-shell-initialize))
+  :init
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH"))
   )
 
 ;; nerd-icons
@@ -271,7 +273,9 @@
   )
 
 (use-package apheleia
-  :ensure t)
+  :ensure t
+  :hook ((prog-mode . apheleia-mode))
+  )
 
 
 ;; auto-generated custom config to custom.el
