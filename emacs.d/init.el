@@ -266,6 +266,8 @@
   (setq lsp-ui-doc-show-with-mouse nil)
   (setq lsp-ui-doc-show-with-cursor t)
   (setq lsp-ui-doc-position 'bottom)
+  (setq lsp-ui-doc-max-width 200)
+  (setq lsp-ui-doc-max-height 30)
   )
 
 (use-package apheleia
