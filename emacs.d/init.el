@@ -262,6 +262,7 @@
   :config
   (setq lsp-ui-sideline-show-diagnostics t)
   (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-ui-sideline-diagnostic-max-lines 5)
   (setq lsp-ui-doc-show-with-mouse nil)
   (setq lsp-ui-doc-show-with-cursor t)
   (setq lsp-ui-doc-position 'bottom)
