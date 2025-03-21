@@ -35,6 +35,9 @@
 (global-set-key (kbd "C-c ;")  'winner-undo)
 (global-set-key (kbd "C-c '")  'winner-redo)
 
+;; for lsp-mode
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024))
 
 ;; set exec-path
 (use-package exec-path-from-shell
