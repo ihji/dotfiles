@@ -29,7 +29,6 @@
 (add-hook 'prog-mode-hook
           (lambda () (setq show-trailing-whitespace t)))
 (setq send-mail-function 'sendmail-send-it)
-(which-key-mode)
 
 (winner-mode 1)
 (global-set-key (kbd "C-c ;")  'winner-undo)
@@ -47,6 +46,10 @@
     (exec-path-from-shell-initialize))
   (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH"))
   )
+
+(use-package which-key
+  :ensure t
+  :init (which-key-mode 1))
 
 ;; nerd-icons
 (use-package nerd-icons
