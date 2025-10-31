@@ -6,6 +6,7 @@ bindkey -e
 # init auto completion
 autoload -U compinit && compinit
 setopt noautomenu
+setopt autocd
 
 # pure prompt config
 fpath+=~/.dotfiles/zsh/pure
